@@ -302,7 +302,11 @@ async function generateTestPlan() {
             method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload)
         });
         const data = await res.json();
-        const content = data.output || data.response || null;
+        const content = data.output_path || data.response || null;
+        if (content && data.output_path) {
+          // If output_path exists, prepend the base URL
+          mergedContent = "https://api-mg.onrender.com" + data.output_path;
+        }
         
         if (content && (content.startsWith('http') || content.includes('.csv') || content.includes('.pdf'))) {
             statusArea.innerHTML = '<span style="color:var(--status-success)">✓ Test Plan generated successfully! Click the button below to download.</span>';
