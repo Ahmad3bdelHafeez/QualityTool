@@ -353,7 +353,7 @@ async function generateTestCases() {
         populateExecutionTable(markdownList);
         
         const dqInput = document.getElementById('dq-test-cases');
-        if (dqInput) dqInput.value = markdownList;
+        // if (dqInput) dqInput.value = markdownList;
         
         const tcExportBtns = document.getElementById('tc-export-buttons');
         if (tcExportBtns) tcExportBtns.classList.remove('hidden');
@@ -428,16 +428,16 @@ async function generateDataQualityTests() {
     
     if (!inputVal) {
         output.classList.remove('hidden');
-        output.innerHTML = '<span style="color:var(--status-warning)">Please provide generated test cases first.</span>';
+        output.innerHTML = '<span style="color:var(--status-warning)">Please provide DB Schema.</span>';
         return;
     }
 
     showLoading('data-quality-btn');
     output.classList.remove('hidden');
-    output.innerHTML = 'Generating Data Quality Tests...';
+    output.innerHTML = 'Generating Data Quality Tests Script...';
     
     try {
-        const payload = { "test_cases": inputVal, "schema": "Please infer appropriate schema." };
+        const payload = { "schema": inputVal };
         const url = 'https://api-mg.onrender.com/generate-data-quality-tests';
         const res = await fetch(url, {
             method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload)
