@@ -305,7 +305,7 @@ async function generateTestPlan() {
         const content = data.output_path || data.response || null;
         if (content && data.output_path) {
           // If output_path exists, prepend the base URL
-          mergedContent = "https://api-mg.onrender.com" + data.output_path;
+          content = "https://api-mg.onrender.com" + data.output_path;
         }
         
         if (content && (content.startsWith('http') || content.includes('.csv') || content.includes('.pdf'))) {
