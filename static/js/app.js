@@ -302,7 +302,7 @@ async function generateTestPlan() {
             method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload)
         });
         const data = await res.json();
-        const content = data.output_path || data.response || null;
+        var content = data.output_path || data.response || null;
         if (content && data.output_path) {
           // If output_path exists, prepend the base URL
           content = "https://api-mg.onrender.com" + data.output_path;
