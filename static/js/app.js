@@ -305,7 +305,7 @@ async function generateTestPlan() {
         var content = data.output_path || data.response || null;
         if (content && data.output_path) {
           // If output_path exists, prepend the base URL
-          content = "https://api-mg.onrender.com" + data.output_path;
+          content = "https://api-mg.onrender.com/tmp/Updated_Test_Plan.docx";
         }
         
         if (content && (content.startsWith('http') || content.includes('.csv') || content.includes('.pdf'))) {
@@ -455,8 +455,11 @@ async function generateDataQualityTests() {
         }
 
         const data = await res.json();
-        const content = data.output || data.response || JSON.stringify(data);
-        output.innerHTML = `<strong>Data Quality Tests:</strong><br><br><pre style="white-space: pre-wrap; font-family: inherit;">${content}</pre>`;
+        var content = data.output || data.response || JSON.stringify(data);
+        content = content
+                              .replace(/```sql/g, '')   // remove opening ```sql
+                              .replace(/```/g, '');     // remove any plain ```
+        output.innerHTML = `<strong>Data Quality Tests Script:</strong><br><br><pre style="white-space: pre-wrap; font-family: inherit;">${content}</pre>`;
         const dqExport = document.getElementById('dq-export-buttons');
         if (dqExport) dqExport.classList.remove('hidden');
     } catch(err) {
