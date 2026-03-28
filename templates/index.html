@@ -174,16 +174,17 @@
                         <div id="tc-output" class="output-area table-container">
                             <p class="placeholder-text">Generated test cases will appear here for review...</p>
                         </div>
+                        <div class="action-buttons mt-4 hidden" id="tc-export-buttons">
+                            <button class="btn secondary" onclick="exportTableToCSV('#tc-output table', 'test_cases.csv')">EXPORT TO CSV</button>
+                            <button class="btn secondary" onclick="copyOutput('#tc-output')">COPY OUTPUT</button>
+                        </div>
                         <div id="tc-review-output" class="output-area document-layout hidden" style="margin-top: 1rem; padding-top: 1rem; border-top: 1px solid var(--border-color);">
                         </div>
                         <div class="action-buttons mt-4 hidden" id="tc-review-export-buttons">
                             <button class="btn secondary" onclick="exportTableToCSV('#tc-review-output table', 'test_case_review.csv')">EXPORT TO CSV</button>
                             <button class="btn secondary" onclick="copyOutput('#tc-review-output')">COPY OUTPUT</button>
                         </div>
-                        <div class="action-buttons mt-4 hidden" id="tc-export-buttons">
-                            <button class="btn secondary" onclick="exportTableToCSV('#tc-output table', 'test_cases.csv')">EXPORT TO CSV</button>
-                            <button class="btn secondary" onclick="copyOutput('#tc-output')">COPY OUTPUT</button>
-                        </div>
+                        
                         <div class="action-buttons mt-4">
                             <button class="btn jira" onclick="pushTestCasesToJira()">Push Selected Test Cases to Jira
                                 (Zephyr)</button>
@@ -196,11 +197,11 @@
                     <div class="glass-panel">
                         <h3>Data Quality Tests</h3>
                         <p style="color: var(--text-secondary); margin-bottom: 1rem; font-size: 0.9em;">
-                            Data Quality Tests require a generated markdown table of test cases. You can paste your own here, or generate them in the <strong>Test Case Gen</strong> module to auto-fill this field.
+                            Data Quality Tests require a Database Schemaa...
                         </p>
                         <div class="form-group">
-                            <label for="dq-test-cases">Generated Test Cases (Markdown)</label>
-                            <textarea id="dq-test-cases" placeholder="Paste test case markdown table here..." style="min-height: 150px;"></textarea>
+                            <label for="dq-test-cases">Database Schema</label>
+                            <textarea id="dq-test-cases" placeholder="Paste Database Schema here..." style="min-height: 150px;"></textarea>
                         </div>
                         <div class="action-buttons">
                             <button class="btn primary" id="data-quality-btn" onclick="generateDataQualityTests()">
@@ -211,7 +212,7 @@
                         <div id="dq-review-output" class="output-area document-layout hidden" style="margin-top: 1rem; padding-top: 1rem; border-top: 1px solid var(--border-color);">
                         </div>
                         <div class="action-buttons mt-4 hidden" id="dq-export-buttons">
-                            <button class="btn secondary" onclick="exportTableToCSV('#dq-review-output table', 'data_quality_tests.csv')">EXPORT TO CSV</button>
+                            <!-- <button class="btn secondary" onclick="exportTableToCSV('#dq-review-output table', 'data_quality_tests.csv')">EXPORT TO CSV</button> -->
                             <button class="btn secondary" onclick="copyOutput('#dq-review-output')">COPY OUTPUT</button>
                         </div>
                     </div>
