@@ -1,6 +1,6 @@
 import os
 import requests
-from flask import Flask, request, jsonify, send_from_directory
+from flask import Flask, request, jsonify, send_from_directory, render_template
 from dotenv import load_dotenv
 import base64
 
@@ -40,7 +40,8 @@ ZEPHYR_BASE_URL = "https://prod-api.zephyr4jiracloud.com/v2"
 
 @app.route('/')
 def serve_index():
-    return send_from_directory('.', 'index.html')
+    # return send_from_directory('.', 'index.html')
+    return render_template('index.html')
 
 # --- API PROXY ROUTES ---
 
