@@ -305,7 +305,7 @@ async function generateTestPlan() {
         var content = data.output_path || data.response || null;
         if (content && data.output_path) {
           // If output_path exists, prepend the base URL
-          content = "https://api-mg.onrender.com/tmp/Updated_Test_Plan.docx";
+          content = "https://api-mg.onrender.com/download/Updated_Test_Plan.docx";
         }
         
         if (content && (content.startsWith('http') || content.includes('.csv') || content.includes('.pdf'))) {
